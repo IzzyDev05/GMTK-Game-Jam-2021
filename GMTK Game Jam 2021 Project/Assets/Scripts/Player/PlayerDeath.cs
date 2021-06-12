@@ -4,18 +4,24 @@ using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
 {
+    public static bool playerWentOffscreen = false;
+
     [SerializeField] float timeAfterDeath = 1f;
     [SerializeField] GameObject gameOverPanel;
 
-    private GameObject player;
-
-    private void Start() {
-        player = GameObject.FindGameObjectWithTag("Player");
+    private void Update() {
+        if (playerWentOffscreen) {
+            ThemeSong.isDead = true;
+        }
+        else {
+            ThemeSong.isDead = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("OffScreen")) {
             FindObjectOfType<AudioManager>().Play("OffscreenDeath");
+            playerWentOffscreen = true;
             KillPlayer();
         }
     }

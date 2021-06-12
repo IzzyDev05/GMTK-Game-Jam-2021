@@ -10,6 +10,8 @@ public class GameOverScreen : MonoBehaviour
     }
 
     public void RestartLevel() {
+        ThemeSong.isDead = false;
+        PlayerDeath.playerWentOffscreen = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

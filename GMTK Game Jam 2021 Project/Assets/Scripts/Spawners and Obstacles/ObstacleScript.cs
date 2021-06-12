@@ -15,15 +15,26 @@ public class ObstacleScript : MonoBehaviour
         camShake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<CameraShake>();
         player = FindObjectOfType<Player>();
         transform.Translate(Vector2.up * speed * Time.deltaTime);
+
+        HandlePlayerDeath();
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.collider.tag == "Player") {
             other.collider.GetComponent<Player>().health -= damage;
             Instantiate(obstalceEffect, transform.position, Quaternion.identity);
+
             ManageSound();
-            camShake.CamShake();
-            Destroy(gameObject);
+            MiscActivities();
+        }
+    }
+
+    private void HandlePlayerDeath() {
+        if (player.health <= 0 || PlayerDeath.playerWentOffscreen) {
+            ThemeSong.isDead = true;
+        }
+        else {
+            ThemeSong.isDead = false;
         }
     }
 
@@ -34,5 +45,10 @@ public class ObstacleScript : MonoBehaviour
         else {
             FindObjectOfType<AudioManager>().Play("PlayerHurt");
         }
+    }
+
+    private void MiscActivities() {
+        camShake.CamShake();
+        Destroy(gameObject);
     }
 }
