@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class ObstacleScript : MonoBehaviour
 {
-    PlayerDeath death;
+    [SerializeField] int damage = 1;
+    [SerializeField] float speed = 5;
+    [SerializeField] GameObject obstalceEffect;
 
-    private void Start() {
-        death = FindObjectOfType<PlayerDeath>();
+    private CameraShake camShake;
+
+    private void Update() {
+        camShake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<CameraShake>();
+        transform.Translate(Vector2.up * speed * Time.deltaTime);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
-        if(collision.gameObject.tag == "Player") {
-            death.KillPlayer("Hit obstacle!");
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.collider.tag == "Player") {
+            other.collider.GetComponent<Player>().health -= damage;
+            Instantiate(obstalceEffect, transform.position, Quaternion.identity);
+            camShake.CamShake();
+            Destroy(gameObject);
         }
     }
 }

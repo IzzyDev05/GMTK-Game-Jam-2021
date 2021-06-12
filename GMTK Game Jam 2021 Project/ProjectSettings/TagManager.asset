@@ -6,6 +6,8 @@ TagManager:
   tags:
   - OffScreen
   - Obstacles
+  - Holder
+  - ScreenShake
   layers:
   - Default
   - TransparentFX

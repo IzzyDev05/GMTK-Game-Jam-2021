@@ -1,22 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerDeath : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("OffScreen")) {
-            KillPlayer("Went offscreen!");
+            KillPlayer();
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.tag == "Obstacles") {
-            KillPlayer("Hit obstacle!");
-        }
-    }
-
-    public void KillPlayer(string reason) {
-        Debug.Log("PLAYER HAS DIED! BIG OOF! CAUSE: " + reason);
+    public void KillPlayer() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
