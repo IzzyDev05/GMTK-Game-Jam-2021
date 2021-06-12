@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameOverScreen : MonoBehaviour
 {
-    private void OnEnable() {
+    public void StopTime() {
         Time.timeScale = 0;
     }
 

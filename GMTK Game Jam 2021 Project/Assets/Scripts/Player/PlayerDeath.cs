@@ -8,6 +8,7 @@ public class PlayerDeath : MonoBehaviour
 
     [SerializeField] float timeAfterDeath = 1f;
     [SerializeField] GameObject gameOverPanel;
+    [SerializeField] GameObject playerEffects;
 
     private void Update() {
         if (playerWentOffscreen) {
@@ -21,13 +22,14 @@ public class PlayerDeath : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("OffScreen")) {
             FindObjectOfType<AudioManager>().Play("OffscreenDeath");
+            Instantiate(playerEffects, transform.position, Quaternion.identity);
             playerWentOffscreen = true;
             KillPlayer();
         }
     }
 
     public void KillPlayer() {
-        StartCoroutine(ActivateGameOver());
+         StartCoroutine(ActivateGameOver());
     }
 
     private IEnumerator ActivateGameOver() {

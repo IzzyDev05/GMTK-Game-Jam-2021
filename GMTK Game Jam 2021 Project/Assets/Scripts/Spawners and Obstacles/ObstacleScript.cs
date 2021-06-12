@@ -7,6 +7,7 @@ public class ObstacleScript : MonoBehaviour
     [SerializeField] int damage = 1;
     [SerializeField] float speed = 5;
     [SerializeField] GameObject obstalceEffect;
+    [SerializeField] GameObject playerEffects;
 
     private CameraShake camShake;
     private Player player;
@@ -41,6 +42,7 @@ public class ObstacleScript : MonoBehaviour
    private void ManageSound() {
         if (player.health <= 0) {
             FindObjectOfType<AudioManager>().Play("OffscreenDeath");
+            Instantiate(playerEffects, player.transform.position, Quaternion.identity);
         }
         else {
             FindObjectOfType<AudioManager>().Play("PlayerHurt");
