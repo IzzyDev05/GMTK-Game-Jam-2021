@@ -12,7 +12,7 @@ public class CameraMovement : MonoBehaviour
         cameraTransform = GetComponent<Transform>();
     }
 
-    private void Update() {
+    private void FixedUpdate() {
         var currentPos = cameraTransform.localPosition.y;
         var newPos = currentPos + cameraMoveSpeed * Time.deltaTime;
 
