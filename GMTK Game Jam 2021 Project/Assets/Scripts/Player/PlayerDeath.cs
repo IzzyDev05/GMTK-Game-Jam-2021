@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
@@ -8,32 +7,45 @@ public class PlayerDeath : MonoBehaviour
 
     [SerializeField] float timeAfterDeath = 1f;
     [SerializeField] GameObject gameOverPanel;
+    [SerializeField] GameObject quitScreen;
     [SerializeField] GameObject playerEffects;
 
-    private void Update() {
-        if (playerWentOffscreen) {
-            ThemeSong.isDead = true;
-        }
-        else {
-            ThemeSong.isDead = false;
-        }
+    private void Start() {
+        quitScreen.SetActive(false);
     }
+
+    
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("OffScreen")) {
             FindObjectOfType<AudioManager>().Play("OffscreenDeath");
-            Instantiate(playerEffects, transform.position, Quaternion.identity);
             playerWentOffscreen = true;
+            Instantiate(playerEffects, transform.position, Quaternion.identity);
             KillPlayer();
         }
     }
 
     public void KillPlayer() {
-         StartCoroutine(ActivateGameOver());
+        if (LossManager.numberOfLosses < 5) {
+            quitScreen.SetActive(false);
+            StartCoroutine(ActivateGameOver());
+        }
+        else {
+            gameOverPanel.SetActive(false);
+            StartCoroutine(ActivateEndGame());
+        }
     }
 
     private IEnumerator ActivateGameOver() {
         yield return new WaitForSeconds(timeAfterDeath);
         gameOverPanel.SetActive(true);
+    }
+
+    private IEnumerator ActivateEndGame() {
+        yield return new WaitForSeconds(timeAfterDeath);
+        quitScreen.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        Debug.Log("Game application has ended");
+        Application.Quit();
     }
 }
