@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private BoxCollider2D boxColl;
     private SpriteRenderer sr;
     private Rigidbody2D rb;
+    private TrailRenderer trailRenderer;
 
     private PlayerDeath death;
 
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
         boxColl = GetComponent<BoxCollider2D>();
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        trailRenderer = GetComponent<TrailRenderer>();
         death = GetComponent<PlayerDeath>();
     }
 
@@ -33,9 +35,10 @@ public class Player : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
-        if (health <= 0) {
+        if (health <= 0 || PlayerDeath.playerWentOffscreen) {
             boxColl.enabled = false;
             sr.enabled = false;
+            trailRenderer.enabled = false;
             death.KillPlayer();
         }
     }
