@@ -6,11 +6,9 @@ public class SpawnPoint : MonoBehaviour
 {
     [SerializeField] float destroyObstacleAfter = 5f;
     [SerializeField] GameObject obstaclePrefab;
-    private GameObject obstacleHolder;
+    [SerializeField] GameObject obstacleHolder;
 
     private void Start() {
-        obstacleHolder = GameObject.FindGameObjectWithTag("Holder");
-
         var obstacle = Instantiate(obstaclePrefab, transform.position, Quaternion.identity);
         obstacle.transform.parent = obstacleHolder.transform;
 

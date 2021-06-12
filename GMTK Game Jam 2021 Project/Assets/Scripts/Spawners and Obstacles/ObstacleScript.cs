@@ -6,9 +6,11 @@ public class ObstacleScript : MonoBehaviour
 {
     [SerializeField] int damage = 1;
     [SerializeField] float speed = 5;
+    [SerializeField] float waitTime = 0.5f;
     [SerializeField] GameObject obstalceEffect;
     [SerializeField] GameObject playerEffects;
 
+    private float currentTime;
     private CameraShake camShake;
     private Player player;
 
@@ -23,6 +25,7 @@ public class ObstacleScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.collider.tag == "Player") {
             other.collider.GetComponent<Player>().health -= damage;
+            PlayerScore.playerScore--;
             Instantiate(obstalceEffect, transform.position, Quaternion.identity);
 
             ManageSound();

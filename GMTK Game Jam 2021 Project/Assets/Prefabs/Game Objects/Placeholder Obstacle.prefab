@@ -114,5 +114,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   speed: 1.5
+  waitTime: 0.1
   obstalceEffect: {fileID: 2681374913847457249, guid: 55598c4beb5c93e47a71220cc0ff7b1b, type: 3}
   playerEffects: {fileID: 2681374913847457249, guid: 46bf75d5b3db26b489301c75dc49112b, type: 3}

@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
     public int health = 5;
     [SerializeField] float movementSpeed = 10.0f;
     [SerializeField] GameObject gameOverPanel;
+    [SerializeField] TMP_Text healthText;
 
     private float horizontal;
     private float vertical;
@@ -41,6 +43,8 @@ public class Player : MonoBehaviour
             trailRenderer.enabled = false;
             death.KillPlayer();
         }
+
+        healthText.text = health.ToString();
     }
 
     private void FixedUpdate() {
@@ -48,5 +52,11 @@ public class Player : MonoBehaviour
         float verticalSpeed = vertical * movementSpeed * Time.deltaTime;
 
         rb.velocity = new Vector2(horizontalSpeed, verticalSpeed);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.tag == "ScoreTrigger") {
+            PlayerScore.playerScore++;
+        }
     }
 }
