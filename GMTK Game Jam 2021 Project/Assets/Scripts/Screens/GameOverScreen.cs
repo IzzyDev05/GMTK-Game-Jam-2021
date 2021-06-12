@@ -15,8 +15,10 @@ public class GameOverScreen : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void ExitGame() {
-        Application.Quit();
+    public void MainMenu() {
+        ThemeSong.isDead = false;
+        PlayerDeath.playerWentOffscreen = false;
+        SceneManager.LoadScene(0);
     }
 
     private void OnDisable() {
