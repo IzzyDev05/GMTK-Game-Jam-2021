@@ -9,9 +9,11 @@ public class ObstacleScript : MonoBehaviour
     [SerializeField] GameObject obstalceEffect;
 
     private CameraShake camShake;
+    private Player player;
 
     private void Update() {
         camShake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<CameraShake>();
+        player = FindObjectOfType<Player>();
         transform.Translate(Vector2.up * speed * Time.deltaTime);
     }
 
@@ -19,9 +21,18 @@ public class ObstacleScript : MonoBehaviour
         if (other.collider.tag == "Player") {
             other.collider.GetComponent<Player>().health -= damage;
             Instantiate(obstalceEffect, transform.position, Quaternion.identity);
-            FindObjectOfType<AudioManager>().Play("PlayerHurt");
+            ManageSound();
             camShake.CamShake();
             Destroy(gameObject);
+        }
+    }
+
+   private void ManageSound() {
+        if (player.health <= 0) {
+            FindObjectOfType<AudioManager>().Play("OffscreenDeath");
+        }
+        else {
+            FindObjectOfType<AudioManager>().Play("PlayerHurt");
         }
     }
 }

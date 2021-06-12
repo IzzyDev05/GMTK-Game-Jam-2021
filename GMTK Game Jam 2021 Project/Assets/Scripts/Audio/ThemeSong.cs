@@ -8,6 +8,7 @@ public class ThemeSong : MonoBehaviour
 
     private AudioSource source;
     private AudioLowPassFilter lowPassFilter;
+    private Player player;
     private bool doesPlayerExist = true;
 
     private void Awake() {
@@ -25,15 +26,16 @@ public class ThemeSong : MonoBehaviour
     private void Start() {
         source = GetComponent<AudioSource>();
         lowPassFilter = GetComponent<AudioLowPassFilter>();
+        player = FindObjectOfType<Player>();
         source.Play();
     }
 
     private void Update() {
         if (GameObject.Find("Player") != null) {
             doesPlayerExist = true;
-        }
+        }   
         else {
-            doesPlayerExist = false;
+          doesPlayerExist = false;
         }
 
         if (doesPlayerExist) {

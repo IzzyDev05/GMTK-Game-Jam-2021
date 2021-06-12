@@ -7,7 +7,7 @@ public class CameraShake : MonoBehaviour
     public Animator camAnim;
 
     private void Start() {
-        camAnim = FindObjectOfType<Camera>().GetComponent<Animator>();
+        camAnim = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>();
     }
 
     public void CamShake() {

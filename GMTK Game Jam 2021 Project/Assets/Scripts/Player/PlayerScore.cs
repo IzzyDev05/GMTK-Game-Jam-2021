@@ -5,8 +5,4 @@ using UnityEngine;
 public class PlayerScore : MonoBehaviour
 {
     public int playerScore = 0;
-
-    private void Update() {
-        Debug.Log(playerScore);
-    }
 }
