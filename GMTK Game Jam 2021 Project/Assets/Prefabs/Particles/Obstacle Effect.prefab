@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3523172614521787219}
   - component: {fileID: 1782034714541857312}
   m_Layer: 0
-  m_Name: Obstacle Effects
+  m_Name: Obstacle Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1538,7 +1538,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    - sprite: {fileID: 21300000, guid: 03c179c9759860a46a66515c69c2bc2f, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
