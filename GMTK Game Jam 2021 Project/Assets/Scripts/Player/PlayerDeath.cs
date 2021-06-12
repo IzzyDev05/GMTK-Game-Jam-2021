@@ -6,6 +6,7 @@ public class PlayerDeath : MonoBehaviour
     public static bool playerWentOffscreen = false;
 
     [SerializeField] float timeAfterDeath = 1f;
+    [SerializeField] float timeBeforeEnd = 7f;
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] GameObject quitScreen;
     [SerializeField] GameObject playerEffects;
@@ -13,8 +14,6 @@ public class PlayerDeath : MonoBehaviour
     private void Start() {
         quitScreen.SetActive(false);
     }
-
-    
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("OffScreen")) {
@@ -44,7 +43,7 @@ public class PlayerDeath : MonoBehaviour
     private IEnumerator ActivateEndGame() {
         yield return new WaitForSeconds(timeAfterDeath);
         quitScreen.SetActive(true);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(timeBeforeEnd);
         Debug.Log("Game application has ended");
         Application.Quit();
     }
