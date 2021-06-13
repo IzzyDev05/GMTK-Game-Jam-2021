@@ -5,8 +5,8 @@ using UnityEngine;
 public class ObstacleScript : MonoBehaviour
 {
     [SerializeField] int damage = 1;
-    [SerializeField] float speed = 5;
-    [SerializeField] float waitTime = 0.5f;
+    [SerializeField] float speed = 1.5f;
+
     [SerializeField] GameObject obstalceEffect;
     [SerializeField] GameObject playerEffects;
 
