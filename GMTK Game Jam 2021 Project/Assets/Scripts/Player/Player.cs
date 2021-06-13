@@ -1,14 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class Player : MonoBehaviour
 {
     public int health = 5;
     [SerializeField] float movementSpeed = 10.0f;
     [SerializeField] GameObject gameOverPanel;
-    [SerializeField] TMP_Text healthText;
 
     private float horizontal;
     private float vertical;
@@ -43,8 +41,6 @@ public class Player : MonoBehaviour
             trailRenderer.enabled = false;
             death.KillPlayer();
         }
-
-        healthText.text = health.ToString();
     }
 
     private void FixedUpdate() {
