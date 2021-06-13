@@ -14,7 +14,7 @@ public class PlayerScore : MonoBehaviour
         scoreStat.text = playerScore.ToString();
 
         if (playerScore > PlayerPrefs.GetInt("HighScore", 0)) {
-            PlayerPrefs.SetInt("HighScore", playerScore - 1);
+            PlayerPrefs.SetInt("HighScore", playerScore);
         }
 
         highScoreStat.text = PlayerPrefs.GetInt("HighScore", 0).ToString();

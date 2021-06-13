@@ -1171,9 +1171,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c7ec74baec5db54280c8f6ffcb2ef8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTimeBetweenSpawn: 1.25
-  decreaseTime: 0.05
-  minTime: 0.65
+  startTimeBetweenSpawn: 1.5
+  decreaseTime: 0.075
+  minTime: 0.5
   patternHolder: {fileID: 457096825}
   obstaclePatterns:
   - {fileID: 9158770994023759093, guid: f8224f5c1ef99104cab2a90ea4b5cde9, type: 3}

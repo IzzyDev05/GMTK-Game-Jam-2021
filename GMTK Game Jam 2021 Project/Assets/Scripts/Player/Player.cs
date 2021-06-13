@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         trailRenderer = GetComponent<TrailRenderer>();
         death = GetComponent<PlayerDeath>();
+
+        PlayerScore.playerScore = 0;
     }
 
     private void Update() {
@@ -50,7 +52,7 @@ public class Player : MonoBehaviour
         rb.velocity = new Vector2(horizontalSpeed, verticalSpeed);
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerExit2D(Collider2D other) {
         if (other.tag == "ScoreTrigger") {
             PlayerScore.playerScore++;
         }
