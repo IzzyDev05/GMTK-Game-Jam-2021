@@ -16,6 +16,8 @@ public class MainMenu : MonoBehaviour
         else {
             postToggle.isOn = false;
         }
+
+        PauseMenu.gameIsPaused = false;
     }
 
     public void PlayGame() {

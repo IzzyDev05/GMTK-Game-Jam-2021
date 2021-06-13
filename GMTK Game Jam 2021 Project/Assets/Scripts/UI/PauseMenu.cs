@@ -11,6 +11,10 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] GameObject endGamePanel;
     [SerializeField] GameObject countdownPanel;
 
+    private void Start() {
+        gameIsPaused = false;
+    }
+
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (gameIsPaused) {

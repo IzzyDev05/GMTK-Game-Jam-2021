@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
         death = GetComponent<PlayerDeath>();
 
         PlayerScore.playerScore = 0;
+        PauseMenu.gameIsPaused = false;
     }
 
     private void Update() {
