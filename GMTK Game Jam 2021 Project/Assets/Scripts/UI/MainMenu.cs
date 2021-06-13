@@ -1,8 +1,23 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] Toggle postToggle;
+
+    private void Start() {
+        ThemeSong.isDead = false;
+        PlayerDeath.playerWentOffscreen = false;
+
+        if (PlayerPrefs.GetInt("PostProcessing") == 1) {
+            postToggle.isOn = true;
+        }
+        else {
+            postToggle.isOn = false;
+        }
+    }
+
     public void PlayGame() {
         SceneManager.LoadScene(1);
     }

@@ -11,6 +11,7 @@ TagManager:
   - ScoreTrigger
   - AudioManager
   - BlurCamera
+  - PostVolume
   layers:
   - Default
   - TransparentFX

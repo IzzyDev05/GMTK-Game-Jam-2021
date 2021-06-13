@@ -38,7 +38,7 @@ public class StopWatch : MonoBehaviour
             currentTime += Time.deltaTime;
         }
         TimeSpan time = TimeSpan.FromSeconds(currentTime);
-        timeAlive.text = time.ToString(@"mm\:ss\:ff");
+        timeAlive.text = time.ToString(@"mm\:ss\:fff");
 
         HighestTime(time);
 

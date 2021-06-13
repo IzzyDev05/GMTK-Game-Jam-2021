@@ -11,6 +11,7 @@ public class SpawnerCountdown : MonoBehaviour
     private Spawner spawner;
 
     private void Start() {
+        countdownPanel.SetActive(true);
         spawner = GetComponent<Spawner>();
         cameraMovement = GetComponentInParent<CameraMovement>();
         spawner.enabled = false;

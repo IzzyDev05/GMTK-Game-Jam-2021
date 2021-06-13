@@ -9,6 +9,7 @@ public class PlayerDeath : MonoBehaviour
     [SerializeField] float timeBeforeEnd = 7f;
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] GameObject quitScreen;
+    [SerializeField] GameObject countdownPanel;
     [SerializeField] GameObject playerEffects;
 
     private void Start() {
@@ -27,10 +28,12 @@ public class PlayerDeath : MonoBehaviour
     public void KillPlayer() {
         if (LossManager.numberOfLosses < 5) {
             quitScreen.SetActive(false);
+            countdownPanel.GetComponent<Animator>().SetTrigger("FadeOut");
             StartCoroutine(ActivateGameOver());
         }
         else {
             gameOverPanel.SetActive(false);
+            countdownPanel.GetComponent<Animator>().SetTrigger("FadeOut");
             StartCoroutine(ActivateEndGame());
         }
     }
