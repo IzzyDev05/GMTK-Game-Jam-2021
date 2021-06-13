@@ -29,7 +29,7 @@ public class ThemeSong : MonoBehaviour
     }
 
     private void Update() {
-        if (isDead) {
+        if (isDead || PauseMenu.gameIsPaused) {
             lowPassFilter.cutoffFrequency = 900f;
         }
         else {
